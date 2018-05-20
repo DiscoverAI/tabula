@@ -1,9 +1,13 @@
 plugins {
-    // Apply the scala plugin to add support for Scala
     id 'scala'
+    id 'application'
 }
 
 def scalaVersion = '2.12'
+
+version = '0.1.0-SNAPSHOT'
+group = 'com.github.discoverai'
+mainClassName = 'com.github.discoverai.tabula.Tabula'
 
 dependencies {
     compile 'org.scala-lang:scala-library:2.12.6'
