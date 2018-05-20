@@ -19,9 +19,9 @@ Unpack that zip file and switch to the newly unpacked folder. Inside that folder
 binary with:
 
 ```bash
-./bin/tabula <INTENT.MD FILE> <OUTPUT FOLDER>
+./bin/tabula ${INTENT.MD FILE} ${DESTINATION FOLDER}
 ```
-where **<INTENT.MD FILE>** is the .md file you want to convert and **<OUTPUT FOLDER>** is the
+where **${INTENT.MD FILE}** is the .md file you want to convert and **${DESTINATION FOLDER}** is the
 destination folder for all converted files.
 
 This will create a _datamart.csv_, _headers.csv_ and _labels.csv_ file.
