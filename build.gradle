@@ -1,0 +1,16 @@
+plugins {
+    // Apply the scala plugin to add support for Scala
+    id 'scala'
+}
+
+def scalaVersion = '2.12'
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.12.6'
+    testCompile "org.scalatest:scalatest_$scalaVersion:3.0.4"
+    testRuntime "org.scala-lang.modules:scala-xml_$scalaVersion:1.0.6"
+}
+
+repositories {
+    jcenter()
+}
