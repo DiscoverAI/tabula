@@ -5,7 +5,7 @@ plugins {
 
 def scalaVersion = '2.12'
 
-version = '0.1.1-SNAPSHOT'
+version = '0.2.0'
 group = 'com.github.discoverai'
 mainClassName = 'com.github.discoverai.tabula.Tabula'
 
