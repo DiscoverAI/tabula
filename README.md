@@ -24,8 +24,8 @@ binary with:
 where **${INTENT.MD FILE}** is the .md file you want to convert and **${DESTINATION FOLDER}** is the
 destination folder for all converted files.
 
-This will create a _datamart.csv_, _headers.csv_ and _labels.csv_ file.
+This will create a _train.csv_, _test.csv_, _headers.csv_ and _labels.csv_ file.
 
-The _datamart.csv_ file contains the features and the indexed labels. The _labels.csv_ contains
-the index and the labels for each index. The _headers.csv_ contains the name of all the columns
-in the _datamart.csv_ file.
+The _train.csv_ and _test.csv_ files contain the features with the indexed labels (first column).
+The _labels.csv_ contains the index and the labels for each index. The _headers.csv_ contains the name
+of all the columns in the _train.csv_ and _test.csv_ files.
