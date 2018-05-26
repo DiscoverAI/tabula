@@ -2,6 +2,7 @@ package com.github.discoverai.tabula
 
 import java.io.PrintWriter
 import java.nio.file.{Files, Paths}
+import scala.util.Random
 
 object Tabula {
 
@@ -18,7 +19,7 @@ object Tabula {
       case Array(inputFile, outputFolder) =>
         try {
           println(s"Start writing files for '$inputFile' to folder '$outputFolder'")
-          val intentInputs: Seq[IntentInputData] = Parser.parseMdFile(inputFile)
+          val intentInputs: Seq[IntentInputData] = Random.shuffle(Parser.parseMdFile(inputFile))
           val labels = DatamartHelper.labels(intentInputs)
           val labelFile = Paths.get(outputFolder + "/labels.csv")
           val labelWriter = new PrintWriter(Files.newOutputStream(labelFile))
