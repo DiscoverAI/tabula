@@ -21,6 +21,25 @@ The _train.csv_ and _test.csv_ files contain the features with the indexed label
 The _labels.csv_ contains the index and the labels for each index. The _headers.csv_ contains the name
 of all the columns in the _train.csv_ and _test.csv_ files.
 
+train/test example:
+```
+...
+3,"no sorry"
+...
+```
+
+labels example:
+```
+...
+8,random
+...
+```
+
+headers example:
+```
+label,sentence
+```
+
 ## Testing
 ```bash
 ./gradlew test
