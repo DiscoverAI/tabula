@@ -1,8 +1,10 @@
 package com.github.discoverai.tabula
 
-import org.scalatest.{FeatureSpec, Matchers}
+import org.scalatest.featurespec.AnyFeatureSpec
+import org.scalatest.matchers.should.Matchers
 
-class DatamartHelperTest extends FeatureSpec with Matchers {
+
+class DatamartHelperTest extends AnyFeatureSpec with Matchers {
 
   val intentInputData = Seq(
     IntentInputData("Bye", Intent("bye")),
@@ -13,14 +15,14 @@ class DatamartHelperTest extends FeatureSpec with Matchers {
     IntentInputData("Thanks !", Intent("thank"))
   )
 
-  feature("Generate labels") {
-    scenario("should generate labels from sequence of intent input data") {
+  Feature("Generate labels") {
+    Scenario("should generate labels from sequence of intent input data") {
       DatamartHelper.labels(intentInputData) shouldBe Map("bye" -> 0, "greet" -> 1, "thank" -> 2)
     }
   }
 
-  feature("Generate datamart") {
-    scenario("should generate datamart lines from sequence of intent input data") {
+  Feature("Generate datamart") {
+    Scenario("should generate datamart lines from sequence of intent input data") {
       val datamartLines = DatamartHelper.datamart(intentInputData, Map("bye" -> 0, "greet" -> 1, "thank" -> 2))
       datamartLines should contain theSameElementsAs Seq(
         "0,\"Bye\"",
