@@ -2,6 +2,7 @@ plugins {
     scala
     application
     id("net.researchgate.release") version "2.8.1"
+    id("com.github.maiflai.scalatest") version "0.26"
 }
 
 repositories {
@@ -21,5 +22,5 @@ application {
 dependencies {
     implementation("org.scala-lang:scala-library:$scalaVersion")
     testImplementation("org.scalatest:scalatest_$scalaCompatVersion:3.1.1")
-    testRuntimeOnly("org.scala-lang.modules:scala-xml_$scalaCompatVersion:1.3.0")
+    testRuntimeOnly("com.vladsch.flexmark:flexmark-all:0.35.10")
 }
