@@ -38,7 +38,9 @@ object Tabula {
           println("Done writing files")
         } catch {
           case e: IllegalArgumentException => print(e.getMessage)
-          case _: Throwable => println("Make sure your files and folders exist!")
+          case e: Throwable =>
+            println("Make sure your files and folders exist!")
+            e.printStackTrace()
         }
       case _ =>
         println("Usage: tabula [INTENT.MD FILE] [OUTPUT FOLDER]")
