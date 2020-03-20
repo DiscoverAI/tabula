@@ -4,6 +4,16 @@ import scala.io.Source
 import scala.util.matching.Regex
 
 object Parser {
+  def splitDataset(splitRatio: Double, intents: Seq[IntentInputData]): (Seq[IntentInputData], Seq[IntentInputData]) = {
+    val groupedIntents = intents.groupBy(_.label)
+    groupedIntents.foldLeft((Seq[IntentInputData](), Seq[IntentInputData]())) {
+      (acc: (Seq[IntentInputData], Seq[IntentInputData]), intentGroup: (Intent, Seq[IntentInputData])) =>
+        val (trainDataset, testDataset) = intentGroup._2.splitAt((intentGroup._2.length * splitRatio).toInt)
+        val (accTrainDataset, accTestDataset) = acc
+        (accTrainDataset ++ trainDataset, accTestDataset ++ testDataset)
+    }
+  }
+
   def parseMdFile(filePath: String): Seq[IntentInputData] = {
     if (!filePath.endsWith(".md")) {
       throw new IllegalArgumentException("Not a valid .md file")

@@ -49,4 +49,33 @@ class ParserTest extends AnyFeatureSpec with Matchers {
       parsedIntents shouldBe expectedIntents
     }
   }
+
+  Feature("Split each intent grouped by label by given percent") {
+    Scenario("should split by 50 50 of each intent set") {
+      val givenIntents = Seq(
+        IntentInputData("Bye", Intent("bye")),
+        IntentInputData("Goodbye", Intent("bye")),
+        IntentInputData("Hi", Intent("greet")),
+        IntentInputData("Hey", Intent("greet")),
+        IntentInputData("Hi bot", Intent("greet")),
+        IntentInputData("Yo !", Intent("greet"))
+      )
+
+      val actual = Parser.splitDataset(0.5, givenIntents)
+      val (actualTrainDataset, actualTestDataset) = actual
+      val expectedTrainDataset = Seq(
+        IntentInputData("Bye", Intent("bye")),
+        IntentInputData("Hi", Intent("greet")),
+        IntentInputData("Hey", Intent("greet"))
+      )
+      val expectedTestDataset = Seq(
+        IntentInputData("Goodbye", Intent("bye")),
+        IntentInputData("Hi bot", Intent("greet")),
+        IntentInputData("Yo !", Intent("greet"))
+      )
+
+      actualTrainDataset should contain theSameElementsAs expectedTrainDataset
+      actualTestDataset should contain theSameElementsAs expectedTestDataset
+    }
+  }
 }
